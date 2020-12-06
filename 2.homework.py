@@ -25,7 +25,12 @@ app = Flask(__name__)
 #Route #1
 @app.route("/")
 def main():    
-    return "Welcome to my answer to the 'Step 2 - Climate App' section of the homework!"
+    return ("Welcome to my answer to the 'Step 2 - Climate App' section of the homework! These are all the routes available: <br/>"
+            "1. /api/v1.0/precipitation <br/>"
+            "2. /api/v1.0/stations <br/>"
+            "3. /api/v1.0/tobs <br/>"
+            "4. /api/v1.0/YYY-MM-DD/YYY-MM-DD<br/>"
+            "5. /api/v1.0/YYY-MM-DD")
 
 #Route #2 --> Please note: the indications in the instructions and grading rubric do not match. The grading rubric states that I must get the data from the LAST YEAR, while the indications request ALL datapoints. I have chosen to follow the rubric indications.
 @app.route("/api/v1.0/precipitation")
@@ -75,8 +80,29 @@ def tobs():
     session.close()
     return jsonify(results3)
 
+#Route #5 (opition 1)
+@app.route("/api/v1.0/<start>/<end>")
+def dates(start,end):
+
+    session = Session(engine)
+    results4 = session.query(func.min(Measurement.tobs),func.max(Measurement.tobs),func.avg(Measurement.tobs)).filter(Measurement.date >= start).filter(Measurement.date <= end).all()
+    
+    session.close()
+    return jsonify(results4)
+    #return f"Below you will find the minimum temperature, maximum temperature and average temperature recorded in this database between the dates you included in the URL {jsonify(results4)}"
+
+#Route #5 (opition 2)
+@app.route("/api/v1.0/<start>")
+def dates1(start):
+
+    session = Session(engine)
+    results5 = session.query(func.min(Measurement.tobs),func.max(Measurement.tobs),func.avg(Measurement.tobs)).filter(Measurement.date >= start).all()
+    session.close()
+    return jsonify(results5)
+
 if __name__ == '__main__': 
     app.run(debug=True)
+
 
 
 
