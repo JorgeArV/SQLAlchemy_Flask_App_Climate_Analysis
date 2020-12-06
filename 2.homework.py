@@ -80,7 +80,7 @@ def tobs():
     session.close()
     return jsonify(results3)
 
-#Route #5 (opition 1)
+#Route #5 (option 1)
 @app.route("/api/v1.0/<start>/<end>")
 def dates(start,end):
 
@@ -89,9 +89,8 @@ def dates(start,end):
     
     session.close()
     return jsonify(results4)
-    #return f"Below you will find the minimum temperature, maximum temperature and average temperature recorded in this database between the dates you included in the URL {jsonify(results4)}"
 
-#Route #5 (opition 2)
+#Route #5 (option 2)
 @app.route("/api/v1.0/<start>")
 def dates1(start):
 
@@ -102,11 +101,4 @@ def dates1(start):
 
 if __name__ == '__main__': 
     app.run(debug=True)
-
-
-
-
-
-
-
-
+    
