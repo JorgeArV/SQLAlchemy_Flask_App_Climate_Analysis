@@ -74,3 +74,7 @@ After completing my initial analysis, I designed a Flask API based on the querie
   * When given the start only, I calculated `TMIN`, `TAVG`, and `TMAX` for all dates greater than and equal to the start date.
 
   * When given the start and the end date, I calculated the `TMIN`, `TAVG`, and `TMAX` for dates between the start and end date inclusive.
+
+  -------
+  
+  Contact: jorge.arriola.villafuerte@gmail.com
