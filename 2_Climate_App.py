@@ -25,7 +25,7 @@ app = Flask(__name__)
 #Route #1
 @app.route("/")
 def main():    
-    return ("Welcome to my answer to the 'Step 2 - Climate App' section of the homework! These are all the routes available: <br/>"
+    return ("Welcome to my Climate App. These are all the routes available: <br/>"
             "1. /api/v1.0/precipitation <br/>"
             "2. /api/v1.0/stations <br/>"
             "3. /api/v1.0/tobs <br/>"
